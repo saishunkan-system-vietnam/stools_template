@@ -1,0 +1,46 @@
+version: "3.7"
+# define all services
+services:
+  mysql:
+    image: "mysql:ssv"
+    restart: "no"
+    container_name: mysql_ssv
+    ports:
+      - "3306:3306"
+      - "33060:33060"
+    privileged: "true"
+    build:
+      context: ./
+      dockerfile: dockfile/mariadb
+    environment:
+      - MYSQL_ROOT_PASSWORD=Ab@123456
+      - MYSQL_ROOT_HOST=%
+      - MYSQL_USER=ssv
+      - MYSQL_PASSWORD=Ab123456@
+    networks:
+      ssvnet:
+        ipv4_address: 172.20.128.2
+
+  httpd:
+    image: "httpd:ssv"
+    restart: "no"
+    container_name: httpd_ssv
+    ports:
+      - "8080:80"
+    privileged: "true"
+    build:
+      context: ./
+      dockerfile: dockfile/httpd
+    volumes:
+      - "./data/source:/var/www/html"
+    command: >
+      bash -c "sh /tmp/composer.sh && apachectl -k start -DFOREGROUND"
+    networks:
+      ssvnet:
+        ipv4_address: 172.20.128.3
+networks:
+  ssvnet:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
