@@ -63,7 +63,7 @@
 		<!--/HEADER-->
 		
 		<!--AUTHOR-->
-		<section class="uk-section uk-section-muted uk-padding-remove-bottom">
+		<section class="uk-section uk-section-muted">
 			<div class="uk-container uk-container-small">
 				<header class="uk-text-center">
 					<h1 class="uk-heading-primary">Choose Module</h1>
