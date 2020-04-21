@@ -1,5 +1,6 @@
-#start with our base image (the foundation) - version 7.3
-FROM php:7.3-apache
+FROM php:7.4.5-apache
+LABEL description="stools.work PHP 7.4.5"
+
 ENV DEBIAN_FRONTEND noninteractive
 ENV COMPOSER_ALLOW_SUPERUSER 1
 
@@ -21,18 +22,17 @@ RUN apt-get update && \
         libzip-dev \
         libmcrypt-dev \
         zip \
-        unzip
+        unzip \
+        vim
 
 RUN rm -r /var/lib/apt/lists/* \
     && docker-php-ext-configure pdo_mysql --with-pdo-mysql=mysqlnd \
     && docker-php-ext-configure gd \
-        --with-gd \
-        --with-webp-dir \
-        --with-jpeg-dir \
-        --with-png-dir \
-        --with-zlib-dir \
-        --with-xpm-dir \
-        --with-freetype-dir \
+        --enable-gd \
+        --with-webp \
+        --with-jpeg \
+        --with-xpm \
+        --with-freetype \
     && docker-php-ext-install \
       intl \
       pdo_mysql \
@@ -49,11 +49,11 @@ ENV APP_HOME /var/www/html/
 ENV APACHE2_CONF_HOME /etc/apache2/sites-available/
 
 #copy source files
-COPY ./data/conf/httpd/ssv.conf $APACHE2_CONF_HOME
+COPY ./data/conf/httpd/stools.conf $APACHE2_CONF_HOME
 COPY ./data/scripts/httpd/composer.sh /tmp/
 
 # enable the virtual host files
-RUN a2ensite ssv.conf
+RUN a2ensite stools.conf
 
 #change uid and gid of apache to docker user uid/gid
 RUN usermod -u 1000 www-data && groupmod -g 1000 www-data

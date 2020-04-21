@@ -1,46 +1,33 @@
 version: "3.7"
 # define all services
 services:
-  mysql:
-    image: "mysql:ssv"
+  postgresql:
+    image: "postgres:stools"
     restart: "no"
-    container_name: mysql_ssv
+    container_name: postgres_stools
     ports:
-      - "3306:3306"
-      - "33060:33060"
+      - "5432:5432"
     privileged: "true"
     build:
       context: ./
-      dockerfile: dockfile/mariadb
+      dockerfile: dockerfile/postgres
     environment:
-      - MYSQL_ROOT_PASSWORD=Ab@123456
-      - MYSQL_ROOT_HOST=%
-      - MYSQL_USER=ssv
-      - MYSQL_PASSWORD=Ab123456@
-    networks:
-      ssvnet:
-        ipv4_address: 172.20.128.2
+      - POSTGRES_PASSWORD=Ab123456a@
+      - POSTGRES_USER=ssv
+      - POSTGRES_DB=stools
+      - POSTGRES_HOST_AUTH_METHOD=md5
 
   httpd:
-    image: "httpd:ssv"
+    image: "httpd:stools"
     restart: "no"
-    container_name: httpd_ssv
+    container_name: httpd_stools
     ports:
       - "8080:80"
     privileged: "true"
     build:
       context: ./
-      dockerfile: dockfile/httpd
+      dockerfile: dockerfile/httpd
     volumes:
       - "./data/source:/var/www/html"
     command: >
       bash -c "sh /tmp/composer.sh && apachectl -k start -DFOREGROUND"
-    networks:
-      ssvnet:
-        ipv4_address: 172.20.128.3
-networks:
-  ssvnet:
-    driver: bridge
-    ipam:
-      config:
-        - subnet: 172.20.0.0/16

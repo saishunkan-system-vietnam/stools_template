@@ -1,6 +1,7 @@
-# CakePHP 3
+# CakePHP
 
 /vendor/*
+*.lock
 /config/app.php
 
 /tmp/cache/models/*
