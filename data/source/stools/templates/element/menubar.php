@@ -3,7 +3,7 @@
 				<button class="uk-offcanvas-close" type="button" uk-close></button>
 				<aside id="left-col" class="uk-light">
 					<div class="left-content-box  content-box-dark">
-						<img src="img/avatar.svg" alt="" class="uk-border-circle profile-img">
+						<?= $this->Html->image('avatar.svg', ['class' => 'uk-border-circle profile-img']); ?>
 						<h4 class="uk-text-center uk-margin-remove-vertical text-light">John Doe</h4>
 						<div class="uk-position-relative uk-text-center uk-display-block">
 							<a href="#" class="uk-text-small uk-text-muted uk-display-block uk-text-center" data-uk-icon="icon: triangle-down; ratio: 0.7">Admin</a>

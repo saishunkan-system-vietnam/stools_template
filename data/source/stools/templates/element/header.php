@@ -6,12 +6,12 @@
 							<a class="uk-navbar-toggle" data-uk-toggle data-uk-navbar-toggle-icon href="#offcanvas-menu" title="Menu" data-uk-tooltip></a>
 						</div>
 						<div class="uk-navbar-item uk-hidden@m">
-							<a class="uk-logo" href="#"><img class="custom-logo" src="img/dashboard-logo-white.svg" alt=""></a>
+							<a class="uk-logo" href="#"><?= $this->Html->image('dashboard-logo-white.svg', ['class' => 'custom-logo']); ?></a>
 						</div>
 						<ul class="uk-navbar-nav uk-visible@m">
 							<li><a class="uk-navbar-toggle" data-uk-toggle data-uk-navbar-toggle-icon href="#offcanvas-menu" title="Menu" data-uk-tooltip></a></li>
 							<li class="left-logo uk-flex uk-flex-middle">
-								<img class="custom-logo" src="img/dashboard-logo.svg" alt="">
+								<?= $this->Html->image('dashboard-logo.svg', ['class' => 'custom-logo']); ?>
 							</li>
 							<li><a href="#"><?= __("Accounts"); ?></a></li>
 							<li>

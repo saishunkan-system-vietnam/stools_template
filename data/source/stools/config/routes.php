@@ -66,6 +66,8 @@ $routes->scope('/', function (RouteBuilder $builder) {
 
     $builder->connect('/stool', ['controller' => 'Pages', 'action' => 'display', 'home']);
 
+    $builder->connect('/stool/list', ['controller' => 'Pages', 'action' => 'list']);
+
     /*
      * Connect catchall routes for all controllers.
      *

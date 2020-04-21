@@ -151,5 +151,5 @@
 <!-- /panel -->
 </div>
 <?php $this->start('scriptcontent'); ?>
-    <script src="js/chartScripts.js"></script>
+    <?= $this->Html->script('chartScripts.js'); ?>
 <?php $this->end(); ?>

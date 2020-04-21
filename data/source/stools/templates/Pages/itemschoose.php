@@ -20,11 +20,11 @@
 				<nav class="uk-navbar uk-light" data-uk-navbar="mode:click; duration: 250">
 					<div class="uk-navbar-left">
 						<div class="uk-navbar-item uk-hidden@m">
-							<a class="uk-logo" href="#"><img class="custom-logo" src="img/dashboard-logo-white.svg" alt=""></a>
+							<a class="uk-logo" href="#"><?= $this->Html->image('dashboard-logo-white.svg', ['class' => 'custom-logo']); ?></a>
 						</div>
 						<ul class="uk-navbar-nav uk-visible@m">
 							<li class="left-logo uk-flex uk-flex-middle">
-								<img class="custom-logo" src="img/dashboard-logo.svg" alt="">
+								<?= $this->Html->image('dashboard-logo.svg', ['class' => 'custom-logo']); ?>
 							</li>
 							<li><a href="#"><?= __("Accounts"); ?></a></li>
 							<li>
@@ -159,7 +159,7 @@
 		</section>
 		<footer class="uk-section uk-section-small uk-text-center">
 			<hr>
-			<p class="uk-text-small uk-text-center">Copyright 2020 - <a href="https://vn.saishunkansys.com">Created by Saishunkan System Vietnam</a> | Built with <a href="http://getuikit.com" title="Visit UIkit 3 site" target="_blank" data-uk-tooltip><span data-uk-icon="uikit"></span></a> </p>
+			<p class="uk-text-small uk-text-center">Copyright 2020 - <a href="https://vn.saishunkansys.com">Saishunkan System Vietnam</a> | Powered by <a href="https://vn.saishunkansys.com" title="Visit Saishunkan System Vietnam site" target="_blank" data-uk-tooltip><?= $this->Html->image('logo-30x30px.svg', ['alt' => 'Saishunkan System Vietnam']); ?></a> </p>
 		</footer>		
 		<!-- JS FILES -->
 		<script src="https://cdn.jsdelivr.net/npm/uikit@latest/dist/js/uikit.min.js"></script>

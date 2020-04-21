@@ -24,7 +24,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 		<title>Dashboard - UIkit 3 KickOff</title>
 		<!-- CSS FILES -->
 		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/uikit@latest/dist/css/uikit.min.css">
-		<link rel="stylesheet" type="text/css" href="css/dashboard.css">
+		<?= $this->Html->css('dashboard.css'); ?>
 		<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.3/dist/semantic.min.css">
 	</head>
 	<body>
