@@ -433,6 +433,5 @@
     $('.ui.selection.dropdown').dropdown({
     });
     $('.checkbox').checkbox();
-;
 </script>
 <?php $this->end(); ?>

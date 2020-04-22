@@ -21,6 +21,7 @@ use Cake\Http\Exception\ForbiddenException;
 use Cake\Http\Exception\NotFoundException;
 use Cake\Http\Response;
 use Cake\View\Exception\MissingTemplateException;
+use Cake\I18n\I18n;
 
 /**
  * Static content controller
@@ -29,7 +30,7 @@ use Cake\View\Exception\MissingTemplateException;
  *
  * @link https://book.cakephp.org/4/en/controllers/pages-controller.html
  */
-class PagesController extends AppController
+class LoginsController extends AppController
 {
     /**
      * Displays a view
@@ -43,20 +44,17 @@ class PagesController extends AppController
      *   be found and not in debug mode.
      * @throws \Cake\View\Exception\MissingTemplateException In debug mode.
      */
-    public function display(...$path): ?Response
-    {
-        array_push($this->pathurl, [ '/stool' => 'Dashboard']);
-        return $this->render('home');
-    }
-
-    public function itemschoose(...$path): ?Response
+    public function login(...$path): ?Response
     {
         $this->viewBuilder()->setLayout('blank');
-        return $this->render();
-    }
-
-    public function list(...$path): ?Response
-    {
-        return $this->render('list');
+        $inputData = $this->request->getData();
+        if ($this->request->is('post')) {
+            if ($inputData['action'] === 'changeLanguage') {
+                I18n::setLocale($inputData['language']);
+            }
+        }
+        $language = I18n::getLocale();
+        $this->set(compact('language'));
+        return $this->render('login');
     }
 }

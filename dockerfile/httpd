@@ -21,6 +21,7 @@ RUN apt-get update && \
         libxpm-dev \
         libzip-dev \
         libmcrypt-dev \
+        libpq-dev \
         zip \
         unzip \
         vim
@@ -33,9 +34,11 @@ RUN rm -r /var/lib/apt/lists/* \
         --with-jpeg \
         --with-xpm \
         --with-freetype \
+    && docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
     && docker-php-ext-install \
       intl \
       pdo_mysql \
+      pdo_pgsql \
       gd \
       zip \
       xml\

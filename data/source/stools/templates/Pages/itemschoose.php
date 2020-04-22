@@ -94,7 +94,7 @@
 								</ul>
 							</div>
 							<div class="uk-card-footer">
-								<a href="<?= $this->Url->build(['controller' => 'Pages', 'action' => 'display', 'home']) ?>" class="uk-button uk-button-primary uk-width-1-1">GO TO</a>
+								<a href="<?= $this->Url->build(['controller' => 'Example', 'action' => 'display', 'prefix' => 'Admin/Timesheet']) ?>" class="uk-button uk-button-primary uk-width-1-1">GO TO</a>
 							</div>
 						</div>
 					</div>
@@ -121,7 +121,7 @@
 								</ul>
 							</div>
 							<div class="uk-card-footer">
-								<a href="<?= $this->Url->build(['controller' => 'Pages', 'action' => 'display', 'home']) ?>" class="uk-button uk-button-primary uk-width-1-1">GO TO</a>
+								<a href="<?= $this->Url->build(['controller' => 'Example', 'action' => 'display', 'prefix' => 'Admin/Inventory']) ?>" class="uk-button uk-button-primary uk-width-1-1">GO TO</a>
 							</div>
 						</div>
 					</div>

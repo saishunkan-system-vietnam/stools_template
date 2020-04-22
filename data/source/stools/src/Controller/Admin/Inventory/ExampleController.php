@@ -14,8 +14,9 @@ declare(strict_types=1);
  * @since     0.2.9
  * @license   https://opensource.org/licenses/mit-license.php MIT License
  */
-namespace App\Controller;
+namespace App\Controller\Admin\Inventory;
 
+use App\Controller\AppController;
 use Cake\Core\Configure;
 use Cake\Http\Exception\ForbiddenException;
 use Cake\Http\Exception\NotFoundException;
@@ -29,7 +30,7 @@ use Cake\View\Exception\MissingTemplateException;
  *
  * @link https://book.cakephp.org/4/en/controllers/pages-controller.html
  */
-class PagesController extends AppController
+class ExampleController extends AppController
 {
     /**
      * Displays a view
@@ -45,18 +46,7 @@ class PagesController extends AppController
      */
     public function display(...$path): ?Response
     {
-        array_push($this->pathurl, [ '/stool' => 'Dashboard']);
+        $this->pathurl['/admin/inventory'] = 'Form Demo Inventory';
         return $this->render('home');
-    }
-
-    public function itemschoose(...$path): ?Response
-    {
-        $this->viewBuilder()->setLayout('blank');
-        return $this->render();
-    }
-
-    public function list(...$path): ?Response
-    {
-        return $this->render('list');
     }
 }

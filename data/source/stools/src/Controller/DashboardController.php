@@ -29,7 +29,7 @@ use Cake\View\Exception\MissingTemplateException;
  *
  * @link https://book.cakephp.org/4/en/controllers/pages-controller.html
  */
-class PagesController extends AppController
+class DashboardController extends AppController
 {
     /**
      * Displays a view
@@ -45,18 +45,7 @@ class PagesController extends AppController
      */
     public function display(...$path): ?Response
     {
-        array_push($this->pathurl, [ '/stool' => 'Dashboard']);
+        $this->pathurl['/stool'] = 'Dashboard';
         return $this->render('home');
-    }
-
-    public function itemschoose(...$path): ?Response
-    {
-        $this->viewBuilder()->setLayout('blank');
-        return $this->render();
-    }
-
-    public function list(...$path): ?Response
-    {
-        return $this->render('list');
     }
 }

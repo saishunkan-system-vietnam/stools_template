@@ -22,8 +22,9 @@
  */
 
 use Cake\Http\Middleware\CsrfProtectionMiddleware;
-use Cake\Routing\Route\DashedRoute;
 use Cake\Routing\RouteBuilder;
+use Cake\Routing\Router;
+use Cake\Routing\Route\DashedRoute;
 
 /*
  * The default class to use for all routes
@@ -64,9 +65,29 @@ $routes->scope('/', function (RouteBuilder $builder) {
      */
     $builder->connect('/', ['controller' => 'Pages', 'action' => 'itemschoose']);
 
-    $builder->connect('/stool', ['controller' => 'Pages', 'action' => 'display', 'home']);
+    $builder->connect('/stool', ['controller' => 'Dashboard', 'action' => 'display', 'home']);
 
     $builder->connect('/stool/list', ['controller' => 'Pages', 'action' => 'list']);
+
+    $builder->connect('/login', ['controller' => 'Logins', 'action' => 'login']);
+
+    Router::prefix('Admin', function (RouteBuilder $routes) {
+        $routes->prefix('Timesheet', function (RouteBuilder $routes) {
+            $routes->connect('/', ['controller' => 'Example', 'action' => 'display']);
+        });
+        $routes->prefix('Inventory', function (RouteBuilder $routes) {
+            $routes->connect('/', ['controller' => 'Example', 'action' => 'display']);
+        });
+    });
+
+    Router::prefix('Api', function (RouteBuilder $routes) {
+        $routes->prefix('Timesheet', function (RouteBuilder $routes) {
+            $routes->connect('/', ['controller' => 'Example', 'action' => 'getList']);
+        });
+        $routes->prefix('Inventory', function (RouteBuilder $routes) {
+            $routes->connect('/', ['controller' => 'Example', 'action' => 'getList']);
+        });
+    });
 
     /*
      * Connect catchall routes for all controllers.
