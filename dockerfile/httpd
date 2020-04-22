@@ -27,17 +27,15 @@ RUN apt-get update && \
         vim
 
 RUN rm -r /var/lib/apt/lists/* \
-    && docker-php-ext-configure pdo_mysql --with-pdo-mysql=mysqlnd \
+    && docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
     && docker-php-ext-configure gd \
         --enable-gd \
         --with-webp \
         --with-jpeg \
         --with-xpm \
         --with-freetype \
-    && docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql \
     && docker-php-ext-install \
       intl \
-      pdo_mysql \
       pdo_pgsql \
       gd \
       zip \
@@ -45,7 +43,7 @@ RUN rm -r /var/lib/apt/lists/* \
     && docker-php-ext-enable gd
 
 #install composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ --filename=composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/bin/ --filename=composer -d default_socket_timeout=3600
 
 #set our application folder as an environment variable
 ENV APP_HOME /var/www/html/
